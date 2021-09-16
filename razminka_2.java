@@ -10,8 +10,8 @@ public class razminka_2 {
         String str_b = "";
         int i = 0;
         Matcher matcher = Pattern.compile("(\\d+)").matcher(Line);
-        while(matcher.find()){
-            if(i == 0){
+        while (matcher.find()) {
+            if (i == 0) {
                 str_a = matcher.group();
                 i++;
             }
@@ -19,24 +19,22 @@ public class razminka_2 {
         }
         int a = Integer.parseInt(str_a);
         int b = Integer.parseInt(str_b);
-        System.out.println(multiply(a, b));
+        multiply(a, b);
     }
-    public static int multiply(int a, int b)
-    {
-        int m = mul(a, Math.abs(b));
-        return (b < 0) ? -m : m;
-    }
-    public static int mul(int a, int b) {
-        if (a == 0 || b == 0) {
-            return 0;
+
+    public static void multiply(int a, int b) {
+        int res = 0;
+        if (a == 0 | b == 0) {
+            System.out.println("На 0 умножать нельзя!");
+        } else {
+            while (true) {
+                res += a;
+                b -= 1;
+                if (b == 0) {
+                    break;
+                }
+            }
+            System.out.println(res);
         }
-        if (b == 1) {
-            return a;
-        }
-        if (a == 1) {
-            return b;
-        }
-        return a + mul(a, b - 1);
     }
 }
-
