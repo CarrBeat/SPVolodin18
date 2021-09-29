@@ -1,7 +1,7 @@
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.io.*;
-class multiply_3 {
+class task_3 {
     public static void main(String[] args){
         reader();
     }
