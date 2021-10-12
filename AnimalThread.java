@@ -1,7 +1,7 @@
 public class AnimalThread extends Thread {
     String PersonName;
     int priorityThread;
-    final int DIST = 150;
+    final int DIST = 100;
     public AnimalThread(String PersonName, int priorityThread) {
         this.PersonName = PersonName;
         this.priorityThread = priorityThread;
