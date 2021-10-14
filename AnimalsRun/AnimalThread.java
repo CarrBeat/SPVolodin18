@@ -1,3 +1,5 @@
+package AnimalsRun;
+
 public class AnimalThread extends Thread {
     String PersonName;
     int priorityThread;
