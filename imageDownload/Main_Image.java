@@ -1,5 +1,4 @@
-package musicDownload;
-
+package imageDownload;
 import java.io.*;
 import java.net.URL;
 import java.nio.channels.Channels;
@@ -8,11 +7,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public class Main {
+public class Main_Image {
 
-    private static final String IN_FILE_TXT = "C:\\Users\\carrb\\IdeaProjects\\SPVolodin18\\musicDownload\\inFile.txt";
-    private static final String OUT_FILE_TXT = "C:\\Users\\carrb\\IdeaProjects\\SPVolodin18\\musicDownload\\outFile.txt";
-    private static final String PATH_TO_MUSIC = "src\\ru\\demo\\musicDownload\\music";
+    private static final String IN_FILE_TXT = "imageDownload\\inFile.txt";
+    private static final String OUT_FILE_TXT = "imageDownload\\outFile.txt";
+    private static final String PATH_TO_MUSIC = "imageDownload\\image";
 
     public static void main(String[] args) {
         String Url;
@@ -20,14 +19,15 @@ public class Main {
              BufferedWriter outFile = new BufferedWriter(new FileWriter(OUT_FILE_TXT))) {
             while ((Url = inFile.readLine()) != null) {
                 URL url = new URL(Url);
+
                 String result;
                 try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(url.openStream()))) {
                     result = bufferedReader.lines().collect(Collectors.joining("\n"));
                 }
-                Pattern email_pattern = Pattern.compile("\\s*(?<=data-url\\s?=\\s?\")[^>]*\\/*(?=\")");
+                Pattern email_pattern = Pattern.compile("\\s*(?<=src\\s?=\\s?\")[^>]*\\/*\\.(jpeg|jpg|png)(?=\")");
                 Matcher matcher = email_pattern.matcher(result);
                 int i = 0;
-                while (matcher.find() && i < 2) {
+                while (matcher.find() && i < 5) {
                     outFile.write(matcher.group() + "\r\n");
                     i++;
                 }
@@ -40,7 +40,7 @@ public class Main {
             int count = 0;
             try {
                 while ((music = musicFile.readLine()) != null) {
-                    downloadUsingNIO(music, PATH_TO_MUSIC + String.valueOf(count) + ".mp3");
+                    downloadUsingNIO(music, PATH_TO_MUSIC + String.valueOf(count) + ".png");
                     count++;
                 }
             } catch (IOException e) {
