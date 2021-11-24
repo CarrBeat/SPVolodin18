@@ -25,7 +25,7 @@ public class Main_Image {
                     result = bufferedReader.lines().collect(Collectors.joining("\n"));
                     System.out.println(result);
                 }
-                Pattern email_pattern = Pattern.compile("\\\\s*(?<=src\\\\s?=\\\\s?\\\")[^>]*\\\\/*\\\\.(jpeg|jpg|png)(?=\\\")");
+                Pattern email_pattern = Pattern.compile("\\s*(?<=src\\s?=\\s?\")[^>]*\\/*\\.(jpeg|jpg|png)(?=\")");
                 Matcher matcher = email_pattern.matcher(result);
                 int i = 0;
                 while (matcher.find() && i < 2) {
